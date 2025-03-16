@@ -5,7 +5,9 @@ from colorama import Fore, Style
 
 
 def list_directory(path: Path, prefix: str = "    ") -> None:
-    for child in sorted(path.iterdir()):
+    dirs = sorted([name for name in path.iterdir() if name.is_dir()])
+    files = sorted([name for name in path.iterdir() if name.is_file()])
+    for child in dirs + files:
         if child.is_dir():
             print(prefix + Fore.GREEN + "📂 " + child.name + Style.RESET_ALL)
             list_directory(path=child, prefix=prefix + "    ")
