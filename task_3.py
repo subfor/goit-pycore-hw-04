@@ -13,7 +13,7 @@ def list_directory(path: Path, prefix: str = "    ") -> None:
             print(prefix + Fore.YELLOW + "📄 " + child.name + Style.RESET_ALL)
 
 
-if __name__ == "__main__":
+def main() -> None:
     if len(sys.argv) < 2:
         print("❌ Error: No path provided")
         sys.exit(1)
@@ -24,6 +24,10 @@ if __name__ == "__main__":
     if not (folder.exists() and folder.is_dir()):
         print("❌ Directory not found")
         sys.exit(1)
-    print(Fore.GREEN + "📂 " + folder.name + Style.RESET_ALL)
 
-    list_directory(folder)
+    print(Fore.GREEN + "📂 " + folder.name + Style.RESET_ALL)
+    list_directory(path=folder)
+
+
+if __name__ == "__main__":
+    main()
