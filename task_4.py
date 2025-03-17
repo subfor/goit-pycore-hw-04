@@ -12,6 +12,8 @@ def add_contact(args, contacts):
 
 def change_contact(args, contacts):
     name, phone = args
+    if not contacts.get(name):
+        return "Contact does not exist."
     contacts[name] = phone
     return "Contact updated."
 
